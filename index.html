@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Al‑Falah School System | The First Step to a Bright Future</title>
+  <meta name="description" content="Al‑Falah School System — a modern, safe and high‑quality learning institution. Admissions are open." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%231e293b'/%3E%3Ctext x='50' y='60' font-family='Arial' font-size='52' text-anchor='middle' fill='white'%3EA%3C/text%3E%3C/svg%3E" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind on-the-fly config (brand palette)
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f8ff', 100: '#e0f0ff', 200: '#b9ddff', 300: '#8ec6ff', 400: '#5aa7ff',
+              500: '#2d8cff', 600: '#1973e6', 700: '#175ec0', 800: '#144e9e', 900: '#0f3a74'
+            }
+          },
+          boxShadow: {
+            soft: '0 6px 24px rgba(0,0,0,0.08)'
+          }
+        }
+      },
+      darkMode: 'class'
+    }
+  </script>
+
+  <!-- Small helpers -->
+  <style>
+    :root { scroll-behavior: smooth; }
+    @keyframes fadeUp { from { opacity:0; transform: translateY(8px);} to { opacity:1; transform:none;} }
+    .reveal { animation: fadeUp .7s ease both; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100">
+  <!-- Skip link -->
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 bg-brand-600 text-white px-3 py-2 rounded">Skip to content</a>
+
+  <!-- Top bar -->
+  <div class="bg-slate-900 text-slate-100 text-sm">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between gap-4">
+      <p>📣 Admissions are open — contact us today!</p>
+      <div class="flex items-center gap-3">
+        <a class="hover:underline" href="#admissions">Apply Online</a>
+        <span class="opacity-60">|</span>
+        <a class="hover:underline" href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header / Navbar -->
+  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/90 dark:bg-slate-900/80 shadow-soft">
+    <nav class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between py-3">
+        <a href="#" class="flex items-center gap-2">
+          <!-- Replace src with your logo file name -->
+          <img src="logo.png" alt="Al-Falah School System Logo" class="h-9 w-9 rounded-xl object-contain bg-white">
+          <span class="font-extrabold tracking-tight text-slate-900 dark:text-white">Al‑Falah School System</span>
+        </a>
+
+        <!-- Desktop menu -->
+        <ul class="hidden md:flex items-center gap-6 font-medium">
+          <li><a class="hover:text-brand-600" href="#about">About</a></li>
+          <li><a class="hover:text-brand-600" href="#programs">Programs</a></li>
+          <li><a class="hover:text-brand-600" href="#facilities">Facilities</a></li>
+          <li><a class="hover:text-brand-600" href="#events">Events</a></li>
+          <li><a class="hover:text-brand-600" href="#admissions">Admissions</a></li>
+          <li><a class="hover:text-brand-600" href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="flex items-center gap-2">
+          <button id="themeToggle"  disabled ="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Toggle theme">
+            <!-- Sun / Moon -->
+            <svg id="iconSun" class="h-5 w-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M22 12h-2M4 12H2m15.5 6.5-1.4-1.4M8 8 6.6 6.6m10 0L15.2 8m-6.8 8L6.6 17.4"/></svg>
+            <svg id="iconMoon" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button id="openMenu" class="md:hidden p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Open menu">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 dark:border-slate-700 py-3">
+        <ul class="flex flex-col gap-3">
+          <li><a class="block px-2 py-2 rounded hover:bg-slate-100 dark:hover:bg-slate-800" href="#about">About</a></li>
+          <li><a class="block px-2 py-2 rounded hover:bg-slate-100 dark:hover:bg-slate-800" href="#programs">Programs</a></li>
+          <li><a class="block px-2 py-2 rounded hover:bg-slate-100 dark:hover:bg-slate-800" href="#facilities">Facilities</a></li>
+          <li><a class="block px-2 py-2 rounded hover:bg-slate-100 dark:hover:bg-slate-800" href="#events">Events</a></li>
+          <li><a class="block px-2 py-2 rounded hover:bg-slate-100 dark:hover:bg-slate-800" href="#admissions">Admissions</a></li>
+          <li><a class="block px-2 py-2 rounded hover:bg-slate-100 dark:hover:bg-slate-800" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
+      <svg class="opacity-10 dark:opacity-20" viewBox="0 0 1440 320"><path fill="currentColor" d="M0,256L60,224C120,192,240,128,360,128C480,128,600,192,720,208C840,224,960,192,1080,170.7C1200,149,1320,139,1380,133.3L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 py-16 lg:py-24">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div class="reveal">
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tight">
+            The <span class="text-brand-700 dark:text-brand-400">First Step</span> to a Bright Future
+          </h1>
+          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
+            At Al‑Falah School System, we guide your child in every dimension with a modern curriculum, trained faculty, and a safe environment.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#admissions" class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-brand-600 text-white font-semibold shadow-soft hover:bg-brand-700">
+              Apply Now
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#about" class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-slate-300 dark:border-slate-700 font-semibold hover:bg-slate-100 dark:hover:bg-slate-800">
+              Learn More
+            </a>
+          </div>
+          <!-- Stats -->
+          <dl class="mt-8 grid grid-cols-3 gap-4">
+            <div class="p-4 bg-white dark:bg-slate-800 rounded-2xl shadow-soft text-center">
+              <dt class="text-sm text-slate-500">Students</dt>
+              <dd class="text-2xl font-extrabold">1200+</dd>
+            </div>
+            <div class="p-4 bg-white dark:bg-slate-800 rounded-2xl shadow-soft text-center">
+              <dt class="text-sm text-slate-500">Teachers</dt>
+              <dd class="text-2xl font-extrabold">85</dd>
+            </div>
+            <div class="p-4 bg-white dark:bg-slate-800 rounded-2xl shadow-soft text-center">
+              <dt class="text-sm text-slate-500">Result</dt>
+              <dd class="text-2xl font-extrabold">98%+</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="reveal lg:justify-self-end">
+          <div class="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-soft">
+            <img src="https://images.unsplash.com/photo-1605647540924-852290f6b0d7?q=80&w=1200&auto=format&fit=crop" alt="School Campus" class="h-full w-full object-cover"/>
+            <div class="absolute inset-0 bg-gradient-to-tr from-brand-900/10 to-transparent"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <main id="main" class="max-w-7xl mx-auto px-4">
+    <section id="about" class="py-14">
+      <div class="grid lg:grid-cols-3 gap-8 items-start">
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl sm:text-3xl font-black tracking-tight">About Us</h2>
+          <p class="mt-4 text-slate-600 dark:text-slate-300 leading-8">
+            Al‑Falah School System is a holistic learning institution where character building and both curricular and co‑curricular activities receive equal focus. Our pedagogy is based on project‑based learning, STEAM, and digital literacy.
+          </p>
+          <ul class="mt-6 grid sm:grid-cols-2 gap-4">
+            <li class="p-5 bg-white dark:bg-slate-800 rounded-2xl shadow-soft"><span class="font-bold">Vision:</span> Empower every child.</li>
+            <li class="p-5 bg-white dark:bg-slate-800 rounded-2xl shadow-soft"><span class="font-bold">Mission:</span> Quality and accessible education.</li>
+            <li class="p-5 bg-white dark:bg-slate-800 rounded-2xl shadow-soft"><span class="font-bold">Values:</span> Integrity, hard work, responsibility.</li>
+            <li class="p-5 bg-white dark:bg-slate-800 rounded-2xl shadow-soft"><span class="font-bold">What’s Unique:</span> Modern labs, coaching, sports.</li>
+          </ul>
+        </div>
+        <aside class="space-y-3">
+          <div class="p-5 rounded-2xl bg-brand-50 dark:bg-slate-800 shadow-soft">
+            <h3 class="font-extrabold">Important Announcements</h3>
+            <ul class="mt-3 list-disc pl-6 text-sm leading-7">
+              <li>Admission form is available online.</li>
+              <li>Summer camp registrations are open.</li>
+              <li>Matric result: 98% pass ratio.</li>
+            </ul>
+          </div>
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-800 shadow-soft">
+            <h3 class="font-extrabold">Office Hours</h3>
+            <p class="mt-2 text-sm">Mon–Fri: 8:00am – 3:00pm<br/>Sat: 9:00am – 1:00pm</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Programs -->
+    <section id="programs" class="py-14">
+      <div class="flex items-end justify-between gap-4">
+        <h2 class="text-2xl sm:text-3xl font-black tracking-tight">Our Programs</h2>
+        <a href="#admissions" class="text-brand-700 dark:text-brand-300 font-semibold hover:underline">Admission Info</a>
+      </div>
+      <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Card -->
+        <article class="group p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-soft border border-slate-200 dark:border-slate-700">
+          <div class="flex items-center justify-between">
+            <h3 class="font-extrabold text-lg">Primary (Grade 1–5)</h3>
+            <span class="px-2 py-1 text-xs rounded-full bg-brand-100 text-brand-800 dark:bg-brand-800 dark:text-brand-100">Foundational</span>
+          </div>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-7">Literacy, numeracy, creative activities, and moral development — strong foundations.</p>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li>👩‍🏫 Low student–teacher ratio</li>
+            <li>💻 Computer literacy</li>
+            <li>🎨 Arts & crafts</li>
+          </ul>
+        </article>
+        <article class="group p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-soft border border-slate-200 dark:border-slate-700">
+          <div class="flex items-center justify-between">
+            <h3 class="font-extrabold text-lg">Middle (Grade 6–8)</h3>
+            <span class="px-2 py-1 text-xs rounded-full bg-brand-100 text-brand-800 dark:bg-brand-800 dark:text-brand-100">Exploration</span>
+          </div>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-7">Science lab, robotics club, study skills — confidence and curiosity.</p>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li>🔬 Modern science lab</li>
+            <li>🤖 Robotics & coding</li>
+            <li>📚 Reading program</li>
+          </ul>
+        </article>
+        <article class="group p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-soft border border-slate-200 dark:border-slate-700">
+          <div class="flex items-center justify-between">
+            <h3 class="font-extrabold text-lg">High School (Grade 9–10)</h3>
+            <span class="px-2 py-1 text-xs rounded-full bg-brand-100 text-brand-800 dark:bg-brand-800 dark:text-brand-100">Mastery</span>
+          </div>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-7">Exam prep, career counseling, and co‑curriculars — achieving excellence.</p>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li>🧪 Practical‑based learning</li>
+            <li>🧭 Career guidance</li>
+            <li>🏆 Debates & sports</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Facilities -->
+    <section id="facilities" class="py-14">
+      <h2 class="text-2xl sm:text-3xl font-black tracking-tight">Our Facilities</h2>
+      <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-soft">
+          <h3 class="font-extrabold">📚 Library</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Quiet study, digital catalog.</p>
+        </div>
+        <div class="p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-soft">
+          <h3 class="font-extrabold">🧪 Science Lab</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Physics, chemistry, biology.</p>
+        </div>
+        <div class="p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-soft">
+          <h3 class="font-extrabold">💻 Computer Lab</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">High‑speed internet.</p>
+        </div>
+        <div class="p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-soft">
+          <h3 class="font-extrabold">🏀 Sports Ground</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Cricket, football, basketball.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events & News -->
+    <section id="events" class="py-14">
+      <div class="flex items-end justify-between gap-4">
+        <h2 class="text-2xl sm:text-3xl font-black tracking-tight">Events & News</h2>
+        <a href="#contact" class="text-sm font-semibold hover:underline">Subscribe for updates</a>
+      </div>
+      <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-soft">
+          <time class="text-xs text-slate-500">15 Aug 2025</time>
+          <h3 class="mt-2 font-extrabold">Independence Day Speech Contest</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Outstanding performances by students — winners announced on website.</p>
+        </article>
+        <article class="p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-soft">
+          <time class="text-xs text-slate-500">5 Sep 2025</time>
+          <h3 class="mt-2 font-extrabold">Teachers’ Day</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Tribute and awards ceremony.</p>
+        </article>
+        <article class="p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-soft">
+          <time class="text-xs text-slate-500">20 Sep 2025</time>
+          <h3 class="mt-2 font-extrabold">Science Fair</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">STEAM project exhibition — parents invited.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Admissions CTA -->
+    <section id="admissions" class="py-14">
+      <div class="rounded-3xl bg-gradient-to-tr from-brand-600 to-brand-800 text-white p-8 md:p-12 shadow-soft">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-black tracking-tight">Online Admissions Are Open</h2>
+            <p class="mt-3 text-white/90">Fill the form, upload documents, and choose an interview date. Our team will contact you.</p>
+            <ul class="mt-4 space-y-2 text-sm text-white/90 list-disc pl-5">
+              <li>Required documents: Birth certificate, B‑Form, previous report cards</li>
+              <li>Scholarships available for limited seats</li>
+            </ul>
+          </div>
+          <form id="applyForm" class="bg-white text-slate-800 rounded-2xl p-6 space-y-4">
+            <div>
+              <label class="block text-sm font-semibold">Student Name</label>
+              <input required type="text" class="mt-1 w-full rounded-xl border-slate-300 focus:border-brand-600 focus:ring-brand-600" placeholder="e.g., Ahmed Khan" />
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-sm font-semibold">Grade</label>
+                <select class="mt-1 w-full rounded-xl border-slate-300 focus:border-brand-600 focus:ring-brand-600">
+                  <option>Grade 1</option><option>Grade 2</option><option>Grade 3</option><option>Grade 4</option><option>Grade 5</option>
+                  <option>Grade 6</option><option>Grade 7</option><option>Grade 8</option><option>Grade 9</option><option>Grade 10</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-semibold">Parent Phone</label>
+                <input required type="tel" class="mt-1 w-full rounded-xl border-slate-300 focus:border-brand-600 focus:ring-brand-600" placeholder="03xx‑xxxxxxx" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold">Email</label>
+              <input type="email" class="mt-1 w-full rounded-xl border-slate-300 focus:border-brand-600 focus:ring-brand-600" placeholder="name@example.com" />
+            </div>
+            <button class="w-full px-5 py-3 rounded-2xl bg-brand-600 text-white font-semibold hover:bg-brand-700">Submit Application</button>
+            <p id="applyMsg" class="text-sm hidden"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Faculty & Testimonials -->
+    <section class="py-14">
+      <div class="grid lg:grid-cols-2 gap-8">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-black tracking-tight">Faculty</h2>
+          <div class="mt-6 grid sm:grid-cols-2 gap-6">
+            <figure class="p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-soft">
+              <img class="h-14 w-14 rounded-full object-cover" src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=200&auto=format&fit=crop" alt="Principal" />
+              <figcaption class="mt-3">
+                <p class="font-extrabold">Sir Faraz Ali</p>
+                <p class="text-sm text-slate-600 dark:text-slate-300">Principal — 20 years of experience</p>
+              </figcaption>
+            </figure>
+            <figure class="p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-soft">
+              <img class="h-14 w-14 rounded-full object-cover" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop" alt="Teacher" />
+              <figcaption class="mt-3">
+                <p class="font-extrabold">Ms. Zainab Fatima</p>
+                <p class="text-sm text-slate-600 dark:text-slate-300">Science Teacher, STEM Lead</p>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-black tracking-tight">Parent & Student Feedback</h2>
+          <div class="mt-6 space-y-4">
+            <blockquote class="p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-soft text-sm leading-7">“Excellent discipline and outstanding teaching quality.” — <span class="font-semibold">Parent</span></blockquote>
+            <blockquote class="p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-soft text-sm leading-7">“The science lab and robotics changed my career path!” — <span class="font-semibold">Student</span></blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-14">
+      <h2 class="text-2xl sm:text-3xl font-black tracking-tight">Frequently Asked Questions</h2>
+      <div class="mt-6 divide-y divide-slate-200 dark:divide-slate-700 rounded-2xl bg-white dark:bg-slate-800 shadow-soft">
+        <details class="group p-5" open>
+          <summary class="flex cursor-pointer list-none items-center justify-between">
+            <span class="font-semibold">What is the fee structure?</span>
+            <svg class="h-5 w-5 transition group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z" clip-rule="evenodd"/></svg>
+          </summary>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Fees vary by grade. Scholarships and siblings’ discounts are available.</p>
+        </details>
+        <details class="group p-5">
+          <summary class="flex cursor-pointer list-none items-center justify-between">
+            <span class="font-semibold">Is transport available?</span>
+            <svg class="h-5 w-5 transition group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z" clip-rule="evenodd"/></svg>
+          </summary>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Yes, van service is available on selected routes.</p>
+        </details>
+        <details class="group p-5">
+          <summary class="flex cursor-pointer list-none items-center justify-between">
+            <span class="font-semibold">How long does the admission process take?</span>
+            <svg class="h-5 w-5 transition group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z" clip-rule="evenodd"/></svg>
+          </summary>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">After the online form, interview and decision typically take 2–5 days.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-14">
+      <div class="grid lg:grid-cols-2 gap-8">
+        <div class="p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-soft">
+          <h2 class="text-2xl sm:text-3xl font-black tracking-tight">Contact</h2>
+          <div class="mt-4 space-y-2 text-sm">
+            <p>📍 Main Campus: 123 Education Road, Gujranwala</p>
+            <p>☎️ Phone: (055) 123‑4567</p>
+            <p>✉️ Email: info@alfalahschool.edu</p>
+          </div>
+          <form id="contactForm" class="mt-6 space-y-4">
+            <div class="grid sm:grid-cols-2 gap-3">
+              <input required class="rounded-xl border-slate-300 focus:border-brand-600 focus:ring-brand-600" placeholder="Your name"/>
+              <input required type="email" class="rounded-xl border-slate-300 focus:border-brand-600 focus:ring-brand-600" placeholder="Email"/>
+            </div>
+            <textarea required rows="4" class="w-full rounded-xl border-slate-300 focus:border-brand-600 focus:ring-brand-600" placeholder="Your message..."></textarea>
+            <button class="px-5 py-3 rounded-2xl bg-brand-600 text-white font-semibold hover:bg-brand-700">Send Message</button>
+            <p id="contactMsg" class="text-sm hidden"></p>
+          </form>
+        </div>
+        <div class="rounded-3xl overflow-hidden shadow-soft bg-white dark:bg-slate-800">
+          <iframe title="School Map" class="w-full h-[380px]" src="https://www.openstreetmap.org/export/embed.html?bbox=74.15%2C32.05%2C74.45%2C32.25&amp;layer=mapnik" loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-8 border-t border-slate-200 dark:border-slate-700">
+    <div class="max-w-7xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+      <p>© <span id="year"></span> Al‑Falah School System. All rights reserved.</p>
+      <ul class="flex items-center gap-4">
+        <li><a class="hover:underline" href="#">Privacy Policy</a></li>
+        <li><a class="hover:underline" href="#">Terms & Conditions</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Dark mode toggle, mobile menu, simple form handlers
+    const themeToggle = document.getElementById('themeToggle');
+    const iconSun = document.getElementById('iconSun');
+    const iconMoon = document.getElementById('iconMoon');
+    const openMenu = document.getElementById('openMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    // Persist theme
+    const storageKey = 'alfalah-theme';
+    const saved = localStorage.getItem(storageKey);
+    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.body.classList.add('dark');
+      iconSun.classList.remove('hidden');
+      iconMoon.classList.add('hidden');
+    }
+
+    themeToggle?.addEventListener('click', () => {
+      const isDark = document.body.classList.toggle('dark');
+      localStorage.setItem(storageKey, isDark ? 'dark' : 'light');
+      iconSun.classList.toggle('hidden', !isDark);
+      iconMoon.classList.toggle('hidden', isDark);
+    });
+
+    openMenu?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Apply Form (fake submit)
+    const applyForm = document.getElementById('applyForm');
+    const applyMsg = document.getElementById('applyMsg');
+    applyForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      applyMsg.textContent = 'Thank you! Your application has been received. Our team will contact you soon.';
+      applyMsg.classList.remove('hidden');
+      applyMsg.classList.add('text-emerald-600');
+      applyForm.reset();
+    });
+
+    // Contact Form (fake submit)
+    const contactForm = document.getElementById('contactForm');
+    const contactMsg = document.getElementById('contactMsg');
+    contactForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      contactMsg.textContent = 'Your message has been received — thank you!';
+      contactMsg.classList.remove('hidden');
+      contactMsg.classList.add('text-emerald-600');
+      contactForm.reset();
+    });
+  </script>
+</body>
+</html>
