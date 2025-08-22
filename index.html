@@ -431,12 +431,7 @@
       iconMoon.classList.add('hidden');
     }
 
-    themeToggle?.addEventListener('click', () => {
-      const isDark = document.body.classList.toggle('dark');
-      localStorage.setItem(storageKey, isDark ? 'dark' : 'light');
-      iconSun.classList.toggle('hidden', !isDark);
-      iconMoon.classList.toggle('hidden', isDark);
-    });
+    
 
     openMenu?.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
